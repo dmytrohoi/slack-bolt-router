@@ -1,9 +1,30 @@
 [tool.poetry]
 name = "slack-bolt-router"
-version = "1.0.0"
-description = "Slack Bolt Router utility"
+version = "0.1.0"
+description = "Slack Bolt Router"
 authors = ["Dmytro Hoi <code@dmytrohoi.com>"]
-license = "MIT License"
+license = "MIT"
+
+readme = "README.md"
+repository = "https://github.com/dmytrohoi/slack-bolt-router/"
+homepage = "https://dmytrohoi.github.io/slack-bolt-router/"
+
+keywords = [
+    "slack",
+    "slack-bolt",
+    "slack-bolt plugin",
+    "slack-bolt router",
+]
+
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Operating System :: OS Independent",
+    "Topic :: Communications",
+    "Topic :: Communications :: Chat",
+    "Topic :: Software Development",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = "^3.6"
