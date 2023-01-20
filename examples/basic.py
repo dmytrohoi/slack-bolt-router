@@ -16,17 +16,17 @@ router = Router()
 # Adding routers:
 # Decorator usage
 @router.register(type=RouteTypes.ACTION)
-def generate_slots_btn(ack):
+def click_btn(ack):
     ack()
     print("test")
 
 # OR
 # Direct adding of handler function with params
-def generate_slots_btn(ack):
+def click_btn(ack):
     ack()
     print("test")
 
-router.add(generate_slots_btn, type=RouteTypes.ACTION)
+router.add(click_btn, type=RouteTypes.ACTION)
 
 # =====================================================
 # Applying routes to Application:
