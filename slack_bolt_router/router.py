@@ -2,7 +2,7 @@
 Contains the Router class that allow to collect and manage routes for
 the Slack Application.
 
-(c) Dmytro Hoi <code@dmytrohoi.com>, 2021 | MIT License
+(c) Dmytro Hoi <code@dmytrohoi.com>, 2021-2023 | MIT License
 """
 from typing import Callable, Dict, List, Optional, Tuple, TYPE_CHECKING
 from logging import Logger, getLogger
@@ -19,7 +19,7 @@ __all__ = ('Router',)
 
 class Router:
     """The helper class to register and apply router to the Slack-Bolt App."""
-    _routes: Dict[str, Tuple[str, Callable]]
+    _routes: Dict[Tuple[str, str], Callable]
     _middlewares: Dict[str, List[Callable]]
 
     def __init__(self, *, logger: Optional[Logger] = None):
@@ -94,10 +94,10 @@ class Router:
         if id is None:
             id = handler.__name__
 
-        if id in self._routes:
-            raise ValueError(f"The same {id=} found!")
+        if (id, type) in self._routes:
+            raise ValueError(f"The same {id=} and {type=} found!")
 
-        self._routes[id] = (type, handler)
+        self._routes[(id, type)] = handler
         if middlewares:
             self._middlewares[id] = middlewares
         return True
@@ -122,7 +122,7 @@ class Router:
         :raise InvalidRouteTypeName: the invalid name of route type passed to
             router
         """
-        for id, (type, func) in self._routes.items():
+        for (id, type), func in self._routes.items():
             middlewares = self._middlewares.get(id)
 
             app_route_func = getattr(bot, type, None)
