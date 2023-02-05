@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "slack-bolt-router"
-version = "0.1.0"
+version = "0.1.1"
 description = "Slack Bolt Router"
 authors = ["Dmytro Hoi <code@dmytrohoi.com>"]
 license = "MIT"
